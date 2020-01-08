@@ -7,18 +7,11 @@ before_install:
   - rvm alias delete default
   - hash -r
   - rm ~/.rvm/hooks/after_use
+  - gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+  - gpg2 --verify binscripts/rvm-installer.asc binscripts/rvm-installer
 install: gem install tf -v '>=0.4.1'
 script: 'NOEXEC=skip tf --text $TEST'
 env:
   - TEST=fast/*
   - TEST=long/named_ruby_and_gemsets_comment_test.sh
   - TEST=long/truffleruby_comment_test.sh
-notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#rvm-test"
-  email:
-    recipients:
-      - mpapis@gmail.com
-      - me@deryldoucette.com
-    on_failure: change
