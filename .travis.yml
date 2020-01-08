@@ -8,6 +8,8 @@ addons:
     packages:
       - dirmngr
       - gnupg2
+      - gawk
+      - libgmp-dev
 before_install:
   - unset BUNDLE_GEMFILE
   - rvm get head
@@ -15,6 +17,8 @@ before_install:
   - hash -r
   - rm ~/.rvm/hooks/after_use
 install: gem install tf -v '>=0.4.1'
+before_script:
+ - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm autolibs read-only; fi
 script: 'NOEXEC=skip tf --text $TEST'
 env:
   - TEST=fast/*
