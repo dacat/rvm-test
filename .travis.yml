@@ -1,6 +1,11 @@
 language: ruby
 rvm:
   - 2.4.1
+addons:
+  apt:
+    packages:
+      - dirmngr
+      - gnupg2
 before_install:
   - unset BUNDLE_GEMFILE
   - rvm get head
