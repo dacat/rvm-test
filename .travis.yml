@@ -3,7 +3,9 @@ os: osx
 osx_image: xcode7.3.1
 rvm:
   - 2.4
-install: gem install tf -v '>=0.4.1'
+install:
+  - brew install apple-gcc42
+  - gem install tf -v '>=0.4.1'
 script:
   - rvm get head
   - rvm autolibs enabled
