@@ -6,7 +6,7 @@ rvm:
 install: gem install tf -v '>=0.4.1'
 script:
   - rvm get head
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm autolibs read-only; fi
+  - rvm autolibs enabled
   - tf --text $TEST
 env:
   - TEST=long/named_ruby_and_gemsets_comment_test.sh
