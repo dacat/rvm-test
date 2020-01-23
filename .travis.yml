@@ -8,6 +8,7 @@ script:
   - rvm get head
   - rvm autolibs enabled
   - tf --text $TEST
+  - cat '/Users/travis/.rvm/log/*/configure.log'
 env:
   - TEST=long/named_ruby_and_gemsets_comment_test.sh
 
